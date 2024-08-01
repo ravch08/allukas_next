@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section {
+	@apply py-20;
+}
+
+h2 {
+	@apply text-4xl font-medium leading-tight;
+}
+
+.swiper-button-next {
+	@apply size-8 rounded-full bg-white p-6 text-black transition-colors duration-300 ease-in-out hover:bg-black hover:text-white;
+}
+
+.swiper-button-prev {
+	@apply size-8 rounded-full bg-white p-6 text-black transition-colors duration-300 ease-in-out hover:bg-black hover:text-white;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+	@apply text-base !important;
+}
+
+.btn {
+	@apply inline px-10 py-3 transition-colors duration-300 ease-in-out;
+}
+
+.btn-outline {
+	@apply border border-black hover:bg-black hover:text-white;
+}
+
+.btn-black {
+	@apply border border-black bg-black text-white hover:bg-transparent hover:text-black;
+}
+
+.btn-gray {
+	@apply border border-gray-400 bg-gray-400 text-white hover:bg-transparent hover:text-black;
+}
+
+.ftr-link {
+	@apply transition-transform duration-300 ease-in-out hover:translate-x-2;
+}
+
+.navlink {
+	@apply p-4 font-normal;
+
+	&.active {
+		@apply font-medium;
+	}
+}
+
+header {
+	@apply sticky left-0 top-0 w-full z-30 bg-white transition-all duration-500 ease-in-out;
+
+	&.sticker {
+		@apply pt-4 shadow-lg;
+	}
+}
+
+.form-control {
+	@apply my-4 block w-full;
+
+	input,
+	textarea {
+		@apply w-full border border-gray-300 bg-white px-4 py-4;
+	}
+}
+.form-error {
+	@apply mt-2 pl-2 text-sm italic text-red-500;
+}
+
+.prodinfo-link {
+	@apply border-b-2 border-transparent py-4 text-xl transition duration-300 ease-in-out;
+
+	&.active {
+		@apply border-b-black;
+	}
+}
