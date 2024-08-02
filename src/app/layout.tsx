@@ -22,6 +22,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={jost.className}>
+				<div id="modal"></div>
+				<div id="overlay"></div>
 				<Header />
 				{children}
 				<Footer />

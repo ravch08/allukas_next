@@ -4,8 +4,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
-
-import { client1, client2, client3, client4, client5 } from "../utils/helper";
+import { clients } from "../utils/data";
 
 const Clients = () => {
 	return (
@@ -27,51 +26,19 @@ const Clients = () => {
 						},
 					}}
 				>
-					<SwiperSlide>
-						<figure className="flex items-center justify-center">
-							<Image
-								src={client1}
-								alt="Bershka"
-								className="transition-opacity duration-300 ease-in-out hover:opacity-50"
-							/>
-						</figure>
-					</SwiperSlide>
-					<SwiperSlide>
-						<figure className="flex items-center justify-center">
-							<Image
-								src={client2}
-								alt="H&M"
-								className="transition-opacity duration-300 ease-in-out hover:opacity-50"
-							/>
-						</figure>
-					</SwiperSlide>
-					<SwiperSlide>
-						<figure className="flex items-center justify-center">
-							<Image
-								src={client3}
-								alt="Zara"
-								className="transition-opacity duration-300 ease-in-out hover:opacity-50"
-							/>
-						</figure>
-					</SwiperSlide>
-					<SwiperSlide>
-						<figure className="flex items-center justify-center">
-							<Image
-								src={client4}
-								alt="Mango"
-								className="transition-opacity duration-300 ease-in-out hover:opacity-50"
-							/>
-						</figure>
-					</SwiperSlide>
-					<SwiperSlide>
-						<figure className="flex items-center justify-center">
-							<Image
-								src={client5}
-								alt="Pull&Bear"
-								className="transition-opacity duration-300 ease-in-out hover:opacity-50"
-							/>
-						</figure>
-					</SwiperSlide>
+					{clients?.map((client) => (
+						<SwiperSlide key={client.id}>
+							<figure className="flex items-center justify-center">
+								<Image
+									width={100}
+									height={100}
+									alt={client.title}
+									src={client.imgSrc}
+									className="w-fit transition-opacity duration-300 ease-in-out hover:opacity-50"
+								/>
+							</figure>
+						</SwiperSlide>
+					))}
 				</Swiper>
 			</div>
 		</section>

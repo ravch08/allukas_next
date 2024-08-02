@@ -1,3 +1,26 @@
+export const navlinks = [
+	{
+		id: 1,
+		to: "/",
+		name: "HOME",
+	},
+	{
+		id: 2,
+		to: "about",
+		name: "ABOUT",
+	},
+	{
+		id: 3,
+		to: "products",
+		name: "PRODUCTS",
+	},
+	{
+		id: 4,
+		to: "contact",
+		name: "CONTACT",
+	},
+];
+
 export const testimonials = [
 	{
 		id: "t1",
@@ -218,4 +241,12 @@ export const teams = [
 		designation: "Product Manager",
 		imgSrc: "/assets/about-us-team-4.webp",
 	},
+];
+
+export const clients = [
+	{ id: 1, title: "Bershika", imgSrc: "/assets/client-01.png" },
+	{ id: 2, title: "H&M", imgSrc: "/assets/client-02.png" },
+	{ id: 3, title: "Zara", imgSrc: "/assets/client-03.png" },
+	{ id: 4, title: "Mango", imgSrc: "/assets/client-04.png" },
+	{ id: 5, title: "Pull&Bear", imgSrc: "/assets/client-05.png" },
 ];

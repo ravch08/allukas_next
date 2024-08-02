@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import CategoryDropdown from "../features/CategoryDropdown";
 import SearchBar from "../features/SearchBar";
 import UserCart from "../features/UserCart";
+import { navlinks } from "../utils/data";
 
 const Header = () => {
 	const [sticky, setSticky] = useState("");
@@ -52,18 +53,11 @@ const Header = () => {
 					<CategoryDropdown />
 
 					<nav className="flex items-center justify-center">
-						<Link className="navlink" href="/">
-							HOME
-						</Link>
-						<Link className="navlink" href="about">
-							ABOUT
-						</Link>
-						<Link className="navlink" href="products">
-							PRODUCTS
-						</Link>
-						<Link className="navlink" href="contact">
-							CONTACT
-						</Link>
+						{navlinks?.map((navlink) => (
+							<Link key={navlink.id} className="navlink" href={navlink.to}>
+								{navlink.name}
+							</Link>
+						))}
 					</nav>
 
 					<div className="flex items-center justify-end gap-6">
