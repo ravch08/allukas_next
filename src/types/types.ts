@@ -21,6 +21,7 @@ export type ProductsProps = {
 	brand: string;
 	price: string;
 	rating: string;
+	quantity?: number;
 	categories?: string[];
 	priceCrossed: string;
 	imgSrc1: string;

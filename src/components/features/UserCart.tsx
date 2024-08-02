@@ -1,10 +1,12 @@
 "use client";
 
+import useCartStore from "@/hooks/useCartStore";
 import Link from "next/link";
 import { useState } from "react";
 import CartSidebar from "./CartSidebar";
 
 const UserCart = () => {
+	const { cartItems } = useCartStore();
 	const [isCartOpen, setIsCartOpen] = useState(false);
 
 	return (
@@ -63,11 +65,11 @@ const UserCart = () => {
 						/>
 					</svg>
 					<span className="absolute -top-2 -right-3 w-5 text-xs text-white flex items-center justify-center h-5 rounded-full bg-black">
-						10
+						{cartItems.length}
 					</span>
 				</button>
 			</div>
-			<CartSidebar setIsCartOpen={setIsCartOpen} isCartOpen={isCartOpen} />
+			<CartSidebar isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 		</>
 	);
 };

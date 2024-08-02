@@ -1,4 +1,6 @@
+import useCartStore from "@/hooks/useCartStore";
 import Link from "next/link";
+import CartProductDetail from "./CartProductDetail";
 
 export type CartSidebarProps = {
 	isCartOpen: boolean;
@@ -6,28 +8,43 @@ export type CartSidebarProps = {
 };
 
 const CartSidebar = ({ isCartOpen, setIsCartOpen }: CartSidebarProps) => {
-	const sidebarClass = `w-full lg:w-1/5 h-screen z-50 transition-all ease-in-out duration-500 flex flex-col gap-4 justify-between bg-white fixed shadow-md top-0 ${
+	const { cartItems, totalPrice } = useCartStore();
+
+	const sidebarClass = `w-full lg:w-1/4 h-screen z-50 transition-all ease-in-out duration-500 flex flex-col gap-4 justify-between bg-white fixed shadow-md top-0 ${
 		isCartOpen ? "right-0" : "-right-[100%]"
 	}`;
 
 	return (
 		<div className={sidebarClass}>
-			<div className="py-6 bg-slate-100 px-8 flex items-center justify-between gap-4">
-				<p className="text-2xl">
-					Your Cart <span>(10)</span>
-				</p>
+			<div className="flex flex-col items-start gap-6">
+				<div className="p-6 w-full bg-slate-100 flex items-center justify-between gap-4">
+					<p className="text-2xl">
+						Your Cart <span>({cartItems.length})</span>
+					</p>
 
-				<button className="italic font-semibold" onClick={() => setIsCartOpen(false)}>
-					close
-				</button>
+					<button className="italic font-semibold" onClick={() => setIsCartOpen(false)}>
+						close
+					</button>
+				</div>
+
+				<ul className="px-6 w-full list-none flex flex-col gap-6 items-start overflow-auto h-[72vh]">
+					{cartItems?.map((item) => (
+						<CartProductDetail
+							id={item.id}
+							key={item.id}
+							title={item.title}
+							price={item.price}
+							imgSrc={item.imgSrc1}
+							quantity={item.quantity}
+						/>
+					))}
+				</ul>
 			</div>
-
-			<ul className="py-6 px-8 list-none flex flex-col gap-6 items-start"></ul>
 
 			<div className="py-6 px-8 flex flex-col gap-4 border-t border-slate-200">
 				<div className="flex items-center justify-between gap-4">
 					<span>SubTotal:</span>
-					<span className="font-semibold">$1,536.00</span>
+					<span className="font-semibold">${totalPrice}</span>
 				</div>
 				<Link
 					href="cart"
