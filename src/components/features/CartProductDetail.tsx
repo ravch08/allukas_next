@@ -1,11 +1,12 @@
 import useCartStore from "@/hooks/useCartStore";
+import { CartProducts } from "@/types/types";
 import Image from "next/image";
 
-const CartProductDetail = ({ id, imgSrc, title, price, quantity }) => {
+const CartProductDetail = ({ id, imgSrc, title, price, quantity }: CartProducts) => {
 	const { incrementQuantity, decrementQuantity, removeFromCart } = useCartStore();
 
 	return (
-		<li className="w-full flex items-start gap-2 relative border-b border-slate-100 pb-4">
+		<li className="w-full flex items-center gap-4 relative border-b border-slate-100 pb-4">
 			<figure>
 				<Image src={imgSrc} alt={title} width={70} height={70} />
 			</figure>

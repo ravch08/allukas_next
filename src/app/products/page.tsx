@@ -7,7 +7,7 @@ import { getProductDetails } from "@/components/utils/getProductDetails";
 import { ProductsProps } from "@/types/types";
 import { PagesBanner, ProductItem } from "../../components/utils/helper";
 
-const Products = () => {
+const ProductsPage = () => {
 	const [showFilter, setShowFilter] = useState(false);
 	const [sortOption, setSortOption] = useState("all");
 
@@ -162,4 +162,4 @@ const Products = () => {
 	);
 };
 
-export default Products;
+export default ProductsPage;

@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import CategoryDropdown from "../features/CategoryDropdown";
-import SearchBar from "../features/SearchBar";
-import UserCart from "../features/UserCart";
 import { navlinks } from "../utils/data";
+import { CategoryDropdown, SearchBar, UserCart } from "../utils/helper";
 
 const Header = () => {
 	const [sticky, setSticky] = useState("");
+	const pathname = usePathname();
 
 	const handleScroll = () => {
 		const scrollClass = window.scrollY > 200 ? "sticker" : "";
@@ -54,7 +54,11 @@ const Header = () => {
 
 					<nav className="flex items-center justify-center">
 						{navlinks?.map((navlink) => (
-							<Link key={navlink.id} className="navlink" href={navlink.to}>
+							<Link
+								key={navlink.id}
+								href={navlink.to}
+								className={`navlink ${pathname === navlink.to ? "font-medium" : "font-normal"}`}
+							>
 								{navlink.name}
 							</Link>
 						))}

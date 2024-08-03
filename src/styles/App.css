@@ -28,11 +28,11 @@ h2 {
 }
 
 .btn-outline {
-	@apply border border-black hover:bg-black hover:text-white;
+	@apply border border-black hover:bg-black hover:text-white transition-colors duration-300 ease-in-out;
 }
 
 .btn-black {
-	@apply border border-black bg-black text-white hover:bg-transparent hover:text-black;
+	@apply border border-black bg-black text-white hover:bg-transparent hover:text-black transition-colors duration-300 ease-in-out;
 }
 
 .btn-gray {
@@ -45,10 +45,6 @@ h2 {
 
 .navlink {
 	@apply p-4 font-normal;
-
-	&.active {
-		@apply font-medium;
-	}
 }
 
 header {

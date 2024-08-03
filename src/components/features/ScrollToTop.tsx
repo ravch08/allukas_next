@@ -23,7 +23,7 @@ const ScrollTop = () => {
 	}, []);
 
 	const scrollTop =
-		"fixed bottom-8 z-40 right-8 flex h-12 w-12 scale-0 cursor-pointer items-center justify-center rounded-full bg-black shadow-lg transition-transform duration-300 ease-in-out";
+		"fixed bottom-8 z-30 right-8 flex h-12 w-12 scale-0 cursor-pointer items-center justify-center rounded-full bg-black shadow-lg transition-transform duration-300 ease-in-out";
 
 	return (
 		<div className={`${scrollTop} ${scroll}`} onClick={scrollToTop}>

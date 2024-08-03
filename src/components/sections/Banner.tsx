@@ -48,9 +48,12 @@ const Banner = () => {
 				<SwiperSlide>
 					<div className="relative flex flex-col">
 						<picture>
-							<source media="(min-width: 768px) and (max-width: 1024px)" srcSet={banner01_1024} />
-							<source media="(max-width: 767px)" srcSet={banner01_768} />
-							<Image src={banner01} alt="A Minimalistic Design Masculine" />
+							<source
+								media="(min-width: 768px) and (max-width: 1024px)"
+								srcSet={banner01_1024.src}
+							/>
+							<source media="(max-width: 767px)" srcSet={banner01_768.src} />
+							<Image priority src={banner01} alt="A Minimalistic Design Masculine" />
 						</picture>
 
 						<div className="absolute left-[15%] top-1/4">
@@ -70,8 +73,11 @@ const Banner = () => {
 				<SwiperSlide>
 					<div className="relative flex flex-col">
 						<picture>
-							<source media="(min-width: 768px) and (max-width: 1024px)" srcSet={banner02_1024} />
-							<source media="(max-width: 767px)" srcSet={banner02_768} />
+							<source
+								media="(min-width: 768px) and (max-width: 1024px)"
+								srcSet={banner02_1024.src}
+							/>
+							<source media="(max-width: 767px)" srcSet={banner02_768.src} />
 							<Image src={banner02} alt="Introducing The Lost Day Collection" />
 						</picture>
 						<div className="absolute left-[15%] top-1/4">
@@ -92,8 +98,11 @@ const Banner = () => {
 				<SwiperSlide>
 					<div className="relative flex flex-col">
 						<picture>
-							<source media="(min-width: 768px) and (max-width: 1024px)" srcSet={banner03_1024} />
-							<source media="(max-width: 767px)" srcSet={banner03_768} />
+							<source
+								media="(min-width: 768px) and (max-width: 1024px)"
+								srcSet={banner03_1024.src}
+							/>
+							<source media="(max-width: 767px)" srcSet={banner03_768.src} />
 							<Image src={banner03} alt="New S/S 2024 Amazing collections" />
 						</picture>
 						<div className="absolute left-[15%] top-1/4">

@@ -1,24 +1,26 @@
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  &::-webkit-scrollbar {
-    width: 0.8rem;
-  }
+	overflow-x: hidden;
 
-  &::-webkit-scrollbar-track {
-    background: gainsboro;
-  }
+	&::-webkit-scrollbar {
+		width: 0.8rem;
+	}
 
-  &::-webkit-scrollbar-thumb {
-    background: black;
-  }
+	&::-webkit-scrollbar-track {
+		background: gainsboro;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: black;
+	}
 }
 
 @supports (scrollbar-color: black gainsboro) {
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: black gainsboro;
-  }
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: black gainsboro;
+	}
 }

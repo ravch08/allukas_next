@@ -28,13 +28,21 @@ export type ProductsProps = {
 	imgSrc2: string;
 };
 
+export type CartProducts = {
+	id: string;
+	title: string;
+	price: string;
+	quantity: number;
+	imgSrc: string;
+};
+
 export type SectionHeadingProps = {
 	heading: string;
 	subHeading: string;
 };
 
 export type RatingsProps = {
-	stars: number;
+	stars: string;
 };
 
 export type CategoryProps = {

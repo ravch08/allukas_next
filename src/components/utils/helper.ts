@@ -32,6 +32,7 @@ export { default as sf_securedPayments } from "../../assets/secured-payment.jpg"
 export { default as sf_support } from "../../assets/support.jpg";
 
 export { default as Banner } from "../sections/Banner";
+export { default as CartCheckout } from "../sections/CartCheckout";
 export { default as Categories } from "../sections/Categories";
 export { default as Clients } from "../sections/Clients";
 export { default as ContactForm } from "../sections/ContactForm";
@@ -54,7 +55,6 @@ export { default as CategoryItem } from "../features/CategoryItem";
 export { default as Loading } from "../features/Loading";
 // export { default as Modal } from "../features/Modal";
 export { default as CartSidebar } from "../features/CartSidebar";
-export { default as ProductItem } from "../features/ProductItem";
 export { default as Ratings } from "../features/Ratings";
 export { default as ScrollToTop } from "../features/ScrollToTop";
 export { default as SearchBar } from "../features/SearchBar";
@@ -64,14 +64,17 @@ export { default as TeamItem } from "../features/TeamItem";
 export { default as TestimonialItem } from "../features/TestimonialItem";
 export { default as UserCart } from "../features/UserCart";
 
-// export { default as Description } from "../pages/products/Description.tsx";
-// export { default as ProductAddCart } from "../pages/products/ProductAddCart.tsx";
-// export { default as ProductInfo } from "../pages/products/ProductInfo.tsx";
-// export { default as ProductShareNSize } from "../pages/products/ProductShareNSize.tsx";
-// export { default as ReturnPolicies } from "../pages/products/ReturnPolicies.tsx";
-// export { default as Reviews } from "../pages/products/Reviews.tsx";
-// export { default as Shipping } from "../pages/products/Shipping.tsx";
+export { default as Description } from "../features/products/Description";
+export { default as ProductInfo } from "../features/products/ProductInfo";
+export { default as ProductItem } from "../features/products/ProductItem";
+export { default as ProductMoreInfo } from "../features/products/ProductMoreInfo";
+export { default as ReturnPolicies } from "../features/products/ReturnPolicies";
+export { default as Reviews } from "../features/products/Reviews";
+export { default as Shipping } from "../features/products/Shipping";
 
 // export { default as ModalQuestions } from "../modals/ModalQuestions.tsx";
 // export { default as ModalShare } from "../modals/ModalShare.tsx";
 // export { default as ModalSize } from "../modals/ModalSize.tsx";
+
+// export { default as ProductAddCart } from "../pages/products/ProductAddCart.tsx";
+// export { default as ProductShareNSize } from "../pages/products/ProductShareNSize.tsx";

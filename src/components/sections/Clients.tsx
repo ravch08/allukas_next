@@ -8,7 +8,7 @@ import { clients } from "../utils/data";
 
 const Clients = () => {
 	return (
-		<section aria-labelledby="Clients" className="border-b border-gray-200 py-16">
+		<section aria-labelledby="Clients" className="border-y border-gray-100 py-16">
 			<div className="container mx-auto">
 				<Swiper
 					spaceBetween={30}

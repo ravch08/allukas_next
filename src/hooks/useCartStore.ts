@@ -1,67 +1,92 @@
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
 import { products } from "@/components/utils/data";
 import { ProductsProps } from "@/types/types";
-import { create } from "zustand";
 
 interface CartState {
+	// totalPrice: number;
 	cartItems: ProductsProps[];
-	totalPrice: number;
+	wishlistItems: ProductsProps[];
+	// getTotalPrice: () => void;
 	addToCart: (idx: string) => void;
-	getTotalPrice: () => void;
 	removeFromCart: (idx: string) => void;
 	incrementQuantity: (idx: string) => void;
 	decrementQuantity: (idx: string) => void;
+	toggleFromWishlist: (idx: string) => void;
 }
 
-const useCartStore = create<CartState>((set, get) => ({
-	cartItems: [],
-	totalPrice: 0,
+const useCartStore = create(
+	persist<CartState>(
+		(set, get) => ({
+			cartItems: [],
+			// totalPrice: 0,
+			wishlistItems: [],
 
-	addToCart: (idx) => {
-		const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
+			// getTotalPrice: () => {
+			// 	const totalPrice = get().cartItems.reduce((acc, cur) => acc + parseFloat(cur.price), 0);
+			// 	set({ totalPrice: totalPrice });
+			// },
 
-		if (itemExists) {
-			if (typeof itemExists.quantity === "number") {
-				itemExists.quantity++;
-			}
+			addToCart: (idx) => {
+				const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
 
-			set({ cartItems: [...get().cartItems] });
-		} else {
-			const product = products.find((prod) => prod.id === idx);
-			set({ cartItems: [...get().cartItems, { ...product, quantity: 1 }] });
+				if (itemExists) {
+					if (typeof itemExists.quantity === "number") {
+						itemExists.quantity++;
+					}
+
+					set({ cartItems: [...get().cartItems] });
+				} else {
+					const selectedItem = products.find((prod) => prod.id === idx);
+					selectedItem &&
+						set({ cartItems: [...get().cartItems, { ...selectedItem, quantity: 1 }] });
+				}
+			},
+
+			removeFromCart: (idx) => {
+				const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
+
+				if (itemExists) {
+					const newCartItems = get().cartItems.filter((item) => item.id !== idx);
+					set({ cartItems: newCartItems });
+				}
+			},
+
+			toggleFromWishlist: (idx) => {
+				const itemExists = get().wishlistItems.find((item) => item.id === idx);
+
+				if (itemExists) {
+					const updatedWishlist = get().wishlistItems.filter((item) => item.id !== idx);
+					set({ wishlistItems: updatedWishlist });
+				} else {
+					const selectedItem = products.find((item: ProductsProps) => item.id === idx);
+					selectedItem && set({ wishlistItems: [...get().wishlistItems, selectedItem] });
+				}
+			},
+
+			incrementQuantity: (idx) => {
+				const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
+
+				if (itemExists && typeof itemExists.quantity === "number" && itemExists.quantity > 0) {
+					itemExists.quantity++;
+					set({ cartItems: get().cartItems });
+				}
+			},
+
+			decrementQuantity: (idx) => {
+				const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
+
+				if (itemExists && typeof itemExists.quantity === "number" && itemExists.quantity > 0) {
+					itemExists.quantity--;
+					set({ cartItems: get().cartItems });
+				}
+			},
+		}),
+		{
+			name: "cart-storage",
 		}
-	},
-
-	removeFromCart: (idx) => {
-		const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
-
-		if (itemExists) {
-			const newCartItems = get().cartItems.filter((item) => item.id !== idx);
-			set({ cartItems: newCartItems });
-		}
-	},
-
-	getTotalPrice: () => {
-		const totalPrice = get().cartItems.reduce((acc, cur) => acc + parseFloat(cur.price), 0);
-		set({ totalPrice: totalPrice });
-	},
-
-	incrementQuantity: (idx) => {
-		const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
-
-		if (itemExists && typeof itemExists.quantity === "number" && itemExists.quantity > 0) {
-			itemExists.quantity++;
-			set({ cartItems: get().cartItems });
-		}
-	},
-
-	decrementQuantity: (idx) => {
-		const itemExists = get().cartItems.find((cartItem) => cartItem.id === idx);
-
-		if (itemExists && typeof itemExists.quantity === "number" && itemExists.quantity > 0) {
-			itemExists.quantity--;
-			set({ cartItems: get().cartItems });
-		}
-	},
-}));
+	)
+);
 
 export default useCartStore;

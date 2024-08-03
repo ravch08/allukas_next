@@ -45,7 +45,7 @@ const ContactForm = () => {
 
 				<form
 					onSubmit={handleSubmit(formSubmitHandler)}
-					className="mx-auto flex w-2/3 flex-col items-start"
+					className="mx-auto flex w-full lg:w-2/3 flex-col items-start"
 				>
 					<div className="flex w-full items-center gap-4">
 						<div className="form-control">

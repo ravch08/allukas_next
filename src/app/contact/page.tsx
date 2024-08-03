@@ -1,6 +1,6 @@
 import { ContactForm, PagesBanner, SalesFeatures, StoreMap } from "../../components/utils/helper";
 
-const Contact = () => {
+const ContactPage = () => {
 	return (
 		<main>
 			<PagesBanner
@@ -14,4 +14,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default ContactPage;

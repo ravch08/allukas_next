@@ -1,5 +1,6 @@
-import useCartStore from "@/hooks/useCartStore";
 import Link from "next/link";
+
+import useCartStore from "@/hooks/useCartStore";
 import CartProductDetail from "./CartProductDetail";
 
 export type CartSidebarProps = {
@@ -8,9 +9,11 @@ export type CartSidebarProps = {
 };
 
 const CartSidebar = ({ isCartOpen, setIsCartOpen }: CartSidebarProps) => {
-	const { cartItems, totalPrice } = useCartStore();
+	const { cartItems } = useCartStore();
 
-	const sidebarClass = `w-full lg:w-1/4 h-screen z-50 transition-all ease-in-out duration-500 flex flex-col gap-4 justify-between bg-white fixed shadow-md top-0 ${
+	const totalPrice = cartItems.reduce((acc, cur) => acc + cur.quantity! * parseFloat(cur.price), 0);
+
+	const sidebarClass = `w-full lg:w-1/4 h-screen z-50 transition-all ease-in-out duration-500 flex flex-col gap-4 justify-between bg-white absolute shadow-md top-0 ${
 		isCartOpen ? "right-0" : "-right-[100%]"
 	}`;
 
@@ -28,14 +31,17 @@ const CartSidebar = ({ isCartOpen, setIsCartOpen }: CartSidebarProps) => {
 				</div>
 
 				<ul className="px-6 w-full list-none flex flex-col gap-6 items-start overflow-auto h-[72vh]">
+					{cartItems.length === 0 ? (
+						<p className="text-center">😔 Your Cart is Empty! Add products.</p>
+					) : null}
 					{cartItems?.map((item) => (
 						<CartProductDetail
-							id={item.id}
+							id={item.id!}
 							key={item.id}
 							title={item.title}
 							price={item.price}
 							imgSrc={item.imgSrc1}
-							quantity={item.quantity}
+							quantity={item.quantity!}
 						/>
 					))}
 				</ul>
@@ -48,7 +54,8 @@ const CartSidebar = ({ isCartOpen, setIsCartOpen }: CartSidebarProps) => {
 				</div>
 				<Link
 					href="cart"
-					className=" text-center w-full py-4 border border-black text-black bg-transparent hover:bg-black hover:text-white transition-colors duration-300 ease-in-out"
+					onClick={() => setIsCartOpen(false)}
+					className="text-center w-full py-4 btn-black"
 				>
 					View Cart
 				</Link>

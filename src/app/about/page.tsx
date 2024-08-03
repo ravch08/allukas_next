@@ -6,7 +6,7 @@ import {
 	SalesFeatures,
 } from "../../components/utils/helper";
 
-const AboutUs = () => {
+const AboutPage = () => {
 	return (
 		<main>
 			<PagesBanner
@@ -21,4 +21,4 @@ const AboutUs = () => {
 	);
 };
 
-export default AboutUs;
+export default AboutPage;
