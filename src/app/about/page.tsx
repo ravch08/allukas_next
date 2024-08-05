@@ -6,6 +6,10 @@ import {
 	SalesFeatures,
 } from "../../components/utils/helper";
 
+export const metadata = {
+	title: "About Us | Allukas",
+};
+
 const AboutPage = () => {
 	return (
 		<main>

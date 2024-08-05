@@ -7,6 +7,12 @@ export type TeamProps = {
 	imgSrc: string;
 };
 
+export type ProductsParamsProps = {
+	params: {
+		productID: string;
+	};
+};
+
 export type TestimonialProps = {
 	id?: string;
 	rating: number;

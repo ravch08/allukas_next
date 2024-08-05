@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 const CartCheckout = () => {
 	return (
-		<div className="border border-black py-6 px-4 flex flex-col col-span-3">
+		<div className="border border-black py-6 px-4 flex flex-col h-fit col-span-1">
 			<h3 className="text-xl font-medium mb-4">Cart Totals</h3>
 			<div className="flex items-center justify-between gap-4 py-4 border-b border-slate-200">
 				<p>Subtotal</p>
@@ -19,7 +21,9 @@ const CartCheckout = () => {
 				<span className="text-xl font-semibold">$1500</span>
 			</div>
 
-			<button className="btn-black">Proceed to Checkout</button>
+			<Link href="checkout" className="btn-black py-3 text-center">
+				Proceed to Checkout
+			</Link>
 		</div>
 	);
 };

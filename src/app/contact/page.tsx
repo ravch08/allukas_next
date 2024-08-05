@@ -1,5 +1,9 @@
 import { ContactForm, PagesBanner, SalesFeatures, StoreMap } from "../../components/utils/helper";
 
+export const metadata = {
+	title: "Contact Us | Allukas",
+};
+
 const ContactPage = () => {
 	return (
 		<main>

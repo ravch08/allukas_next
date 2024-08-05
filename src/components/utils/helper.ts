@@ -54,7 +54,9 @@ export { default as CategoryDropdown } from "../features/CategoryDropdown";
 export { default as CategoryItem } from "../features/CategoryItem";
 export { default as Loading } from "../features/Loading";
 // export { default as Modal } from "../features/Modal";
+export { default as CartLayout } from "../features/CartLayout";
 export { default as CartSidebar } from "../features/CartSidebar";
+export { default as FilterButton } from "../features/FilterButton";
 export { default as Ratings } from "../features/Ratings";
 export { default as ScrollToTop } from "../features/ScrollToTop";
 export { default as SearchBar } from "../features/SearchBar";
@@ -63,14 +65,17 @@ export { default as SocialIcons } from "../features/SocialIcons";
 export { default as TeamItem } from "../features/TeamItem";
 export { default as TestimonialItem } from "../features/TestimonialItem";
 export { default as UserCart } from "../features/UserCart";
+export { default as WishlistProductList } from "../features/WishlistProductList";
 
 export { default as Description } from "../features/products/Description";
+export { default as FilteredProducts } from "../features/products/FilteredProducts";
 export { default as ProductInfo } from "../features/products/ProductInfo";
 export { default as ProductItem } from "../features/products/ProductItem";
 export { default as ProductMoreInfo } from "../features/products/ProductMoreInfo";
 export { default as ReturnPolicies } from "../features/products/ReturnPolicies";
 export { default as Reviews } from "../features/products/Reviews";
 export { default as Shipping } from "../features/products/Shipping";
+export { default as SingleProductDetail } from "../features/products/SingleProductDetail";
 
 // export { default as ModalQuestions } from "../modals/ModalQuestions.tsx";
 // export { default as ModalShare } from "../modals/ModalShare.tsx";
