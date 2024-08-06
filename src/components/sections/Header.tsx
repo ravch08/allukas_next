@@ -82,7 +82,7 @@ const Header = () => {
 							</svg>
 							<span>(+800) 1234 56</span>
 						</Link>
-						<Link href="contact" className="flex items-center gap-1">
+						<Link href="/contact" className="flex items-center gap-1">
 							<svg
 								fill="none"
 								strokeWidth={1.5}
