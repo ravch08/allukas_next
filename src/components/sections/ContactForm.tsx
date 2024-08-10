@@ -31,7 +31,6 @@ const ContactForm = () => {
 	} = useForm<ContactProps>({ resolver: zodResolver(contactSchema) });
 
 	const formSubmitHandler = (data: ContactProps) => {
-		console.log(data);
 		reset();
 	};
 

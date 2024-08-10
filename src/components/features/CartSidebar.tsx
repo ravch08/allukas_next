@@ -30,10 +30,11 @@ const CartSidebar = ({ isCartOpen, setIsCartOpen }: CartSidebarProps) => {
 					</button>
 				</div>
 
+				{cartItems.length === 0 ? (
+					<p className="text-center p-6">😔 Your Cart is Empty! Add products.</p>
+				) : null}
+
 				<ul className="px-6 w-full list-none flex flex-col gap-6 items-start overflow-auto h-[72vh]">
-					{cartItems.length === 0 ? (
-						<p className="text-center">😔 Your Cart is Empty! Add products.</p>
-					) : null}
 					{cartItems?.map((item) => (
 						<CartProductDetail
 							id={item.id!}
