@@ -1,0 +1,30 @@
+services:
+  # app:
+  #   build: .
+  #   image: allukas-dev
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     NODE_ENV: development
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./src
+  #         target: /app/src
+  #         ignore:
+  #           - node_modules/
+  #       - action: rebuild
+  #         path: package.json
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_DB=allukas_db
+      - POSTGRES_PASSWORD=mypassword
+    ports:
+      - 5432:5432

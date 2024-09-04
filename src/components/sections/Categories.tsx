@@ -1,7 +1,10 @@
-import { CategoryArrProps, CategoryProps } from "../../types/types";
+import prisma from "@/lib/db";
+import { CategoriesProps } from "@/types/types";
 import { CategoryItem, SectionHeading } from "../utils/helper";
 
-const Categories = ({ categoryArr }: CategoryArrProps) => {
+const Categories = async () => {
+	const categories = await prisma.category.findMany();
+
 	return (
 		<section aria-labelledby="Categories">
 			<div className="container mx-auto px-8">
@@ -11,10 +14,9 @@ const Categories = ({ categoryArr }: CategoryArrProps) => {
 				/>
 
 				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-					{categoryArr.length &&
-						categoryArr?.map((cat: CategoryProps) => (
-							<CategoryItem key={cat.category} category={cat.category} catImgSrc={cat.catImgSrc} />
-						))}
+					{categories?.map((cat: CategoriesProps) => (
+						<CategoryItem key={cat.id} title={cat.title} imgSrc={cat.imgSrc} slug={cat.slug} />
+					))}
 				</div>
 			</div>
 		</section>

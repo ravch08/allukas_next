@@ -1,35 +1,14 @@
-import { CategoryProps, ProductsProps } from "@/types/types";
+import useCartStore from "@/store/useCartStore";
+import { ProductsProps } from "@/types/types";
 
-export function getProductDetails(products: ProductsProps[]) {
-	const uniqueCategories = {} as { [key: string]: string };
+export function getProductDetails(products: ProductsProps[], sortOption = "all") {
+	console.log(products);
 
-	products?.forEach((product: ProductsProps) => {
-		product?.categories!.forEach((category) => {
-			if (!uniqueCategories[category]) {
-				uniqueCategories[category] = product.imgSrc1;
-			}
-		});
-	});
+	const setProducts = useCartStore.getState().setProducts;
+	setProducts(products);
 
-	const categoriesArray: CategoryProps[] = Object.keys(uniqueCategories)
-		.map((category) => ({
-			category: category,
-			catImgSrc: uniqueCategories[category],
-		}))
-		.filter(
-			(cat) =>
-				cat.category !== "new arrivals" &&
-				cat.category !== "featured" &&
-				cat.category !== "bestseller"
-		);
-
-	const newArrivals = products?.filter((prod: ProductsProps) =>
-		prod.categories!.includes("new arrivals")
-	);
-
-	const featuredProducts = products?.filter((prod: ProductsProps) =>
-		prod.categories!.includes("featured")
-	);
+	const newArrivals = products?.filter((prod: ProductsProps) => prod.isNewArrival);
+	const featuredProducts = products?.filter((prod: ProductsProps) => prod.isFeatured);
 
 	const sortedTitleProducts = products?.reduce(
 		(sortedArray: ProductsProps[], currentProduct: ProductsProps) => {
@@ -49,7 +28,7 @@ export function getProductDetails(products: ProductsProps[]) {
 	const sortedPriceProducts = products?.reduce(
 		(sortedArray: ProductsProps[], currentProduct: ProductsProps) => {
 			const index = sortedArray.findIndex(
-				(product: ProductsProps) => parseFloat(product.price) > parseFloat(currentProduct.price)
+				(product: ProductsProps) => product.price > currentProduct.price
 			);
 
 			index === -1
@@ -61,11 +40,29 @@ export function getProductDetails(products: ProductsProps[]) {
 		[]
 	);
 
+	let finalProducts;
+
+	if (sortOption === "all") {
+		finalProducts = products;
+	} else if (sortOption === "newArrivals") {
+		finalProducts = products?.filter((prod: ProductsProps) => prod.isNewArrival);
+	} else if (sortOption === "featured") {
+		finalProducts = products?.filter((prod: ProductsProps) => prod.isFeatured);
+	} else if (sortOption === "az") {
+		finalProducts = sortedTitleProducts;
+	} else if (sortOption === "za") {
+		finalProducts = sortedTitleProducts.reverse();
+	} else if (sortOption === "lh") {
+		finalProducts = sortedPriceProducts;
+	} else if (sortOption === "hl") {
+		finalProducts = sortedPriceProducts.reverse();
+	}
+
 	return {
 		newArrivals,
 		featuredProducts,
-		categoriesArray,
 		sortedPriceProducts,
 		sortedTitleProducts,
+		finalProducts,
 	};
 }

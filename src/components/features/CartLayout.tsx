@@ -8,8 +8,8 @@ import {
 } from "@tanstack/react-table";
 import Image from "next/image";
 
-import useCartStore from "@/hooks/useCartStore";
 import { CartCheckout } from "../../components/utils/helper";
+import useCartStore from "../../store/useCartStore";
 
 export type CartColumnProps = {
 	id?: string;

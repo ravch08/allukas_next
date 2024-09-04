@@ -1,24 +1,28 @@
-import { products } from "@/components/utils/data";
 import { getProductDetails } from "@/components/utils/getProductDetails";
+import prisma from "@/lib/db";
+
 import {
 	Banner,
 	Categories,
 	Clients,
 	FollowUs,
 	MiniBanner,
+	ProductsInitializer,
 	SalesFeatures,
 	SortedProducts,
 	StoresNearYou,
 	Testimonials,
 } from "../components/utils/helper";
 
-export default function Home() {
-	const { newArrivals, categoriesArray, featuredProducts } = getProductDetails(products);
+export default async function Home() {
+	const products = await prisma.product.findMany();
+	const { newArrivals, featuredProducts } = getProductDetails(products);
 
 	return (
 		<main>
 			<Banner />
-			<Categories categoryArr={categoriesArray} />
+			<Categories />
+			<ProductsInitializer products={products} />
 			<SortedProducts
 				products={newArrivals}
 				heading={"New Arrivals"}

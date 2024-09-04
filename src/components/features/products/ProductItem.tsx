@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import useCartStore from "@/hooks/useCartStore";
+import useCartStore from "../../../store/useCartStore";
 import { ProductsProps } from "../../../types/types";
 
 const ProductItem = (props: ProductsProps) => {

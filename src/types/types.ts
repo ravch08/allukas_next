@@ -1,4 +1,40 @@
 import { ReactNode } from "react";
+import { boolean, date, number, string, z } from "zod";
+
+// Zod Types -------------------------------------------------------------
+
+export const productsSchema = z.object({
+	id: string(),
+	createdAt: date(),
+	title: string(),
+	imgSrc1: string(),
+	imgSrc2: string(),
+	rating: number()
+		.gte(1, { message: "Cannot be less than 1" })
+		.lte(5, { message: "Cannot be more than 5" }),
+	price: number().nonnegative(),
+	priceCrossed: number().nullable(),
+	brand: string(),
+	quantity: number().optional(),
+	isFeatured: boolean(),
+	isNewArrival: boolean(),
+	catSlug: string(),
+});
+
+export const categoriesSchema = z.object({
+	id: z.string().optional(),
+	createdAt: z.date().optional(),
+	title: z.string(),
+	imgSrc: z.string(),
+	slug: z.string(),
+	products: z.string().optional(),
+});
+
+export type CategoriesProps = z.infer<typeof categoriesSchema>;
+
+export type ProductsProps = z.infer<typeof productsSchema>;
+
+// Declared Types -------------------------------------------------------------
 
 export type TeamProps = {
 	id?: string;
@@ -21,19 +57,6 @@ export type TestimonialProps = {
 	review: string;
 };
 
-export type ProductsProps = {
-	id?: string;
-	title: string;
-	brand: string;
-	price: string;
-	rating: string;
-	quantity?: number;
-	categories?: string[];
-	priceCrossed: string;
-	imgSrc1: string;
-	imgSrc2: string;
-};
-
 export type CartProducts = {
 	id: string;
 	title: string;
@@ -49,15 +72,6 @@ export type SectionHeadingProps = {
 
 export type RatingsProps = {
 	stars: string;
-};
-
-export type CategoryProps = {
-	catImgSrc: string;
-	category: string;
-};
-
-export type CategoryArrProps = {
-	categoryArr: CategoryProps[];
 };
 
 export type PageBannerProps = {

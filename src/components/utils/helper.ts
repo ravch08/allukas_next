@@ -31,6 +31,8 @@ export { default as sf_returns } from "../../assets/returns.jpg";
 export { default as sf_securedPayments } from "../../assets/secured-payment.jpg";
 export { default as sf_support } from "../../assets/support.jpg";
 
+export { default as AuthProvider } from "../../Auth/AuthProvider";
+
 export { default as Banner } from "../sections/Banner";
 export { default as CartCheckout } from "../sections/CartCheckout";
 export { default as Categories } from "../sections/Categories";
@@ -39,11 +41,13 @@ export { default as ContactForm } from "../sections/ContactForm";
 export { default as FollowUs } from "../sections/FollowUs";
 export { default as Footer } from "../sections/Footer";
 export { default as Header } from "../sections/Header";
+export { default as LoginForm } from "../sections/LoginForm";
 export { default as MiniBanner } from "../sections/MiniBanner";
 export { default as OurMission } from "../sections/OurMission";
 export { default as OurStory } from "../sections/OurStory";
 export { default as OurTeam } from "../sections/OurTeam";
 export { default as PagesBanner } from "../sections/PagesBanner";
+export { default as RegisterForm } from "../sections/RegisterForm";
 export { default as SalesFeatures } from "../sections/SalesFeatures";
 export { default as SortedProducts } from "../sections/SortedProducts";
 export { default as StoreMap } from "../sections/StoreMap";
@@ -53,6 +57,7 @@ export { default as Testimonials } from "../sections/Testimonials";
 export { default as CategoryDropdown } from "../features/CategoryDropdown";
 export { default as CategoryItem } from "../features/CategoryItem";
 export { default as Loading } from "../features/Loading";
+export { default as ProductsInitializer } from "../features/ProductsInitializer";
 // export { default as Modal } from "../features/Modal";
 export { default as CartLayout } from "../features/CartLayout";
 export { default as CartSidebar } from "../features/CartSidebar";
@@ -72,6 +77,7 @@ export { default as FilteredProducts } from "../features/products/FilteredProduc
 export { default as ProductInfo } from "../features/products/ProductInfo";
 export { default as ProductItem } from "../features/products/ProductItem";
 export { default as ProductMoreInfo } from "../features/products/ProductMoreInfo";
+export { default as ProductsList } from "../features/products/ProductsList";
 export { default as ReturnPolicies } from "../features/products/ReturnPolicies";
 export { default as Reviews } from "../features/products/Reviews";
 export { default as Shipping } from "../features/products/Shipping";

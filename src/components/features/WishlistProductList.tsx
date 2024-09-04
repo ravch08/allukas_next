@@ -1,7 +1,7 @@
 "use client";
 
-import useCartStore from "@/hooks/useCartStore";
 import { ProductsProps } from "@/types/types";
+import useCartStore from "../../store/useCartStore";
 import ProductItem from "./products/ProductItem";
 
 const WishlistProductList = () => {

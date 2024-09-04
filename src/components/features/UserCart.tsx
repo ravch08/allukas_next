@@ -1,8 +1,9 @@
 "use client";
 
-import useCartStore from "@/hooks/useCartStore";
 import Link from "next/link";
 import { useState } from "react";
+
+import useCartStore from "../../store/useCartStore";
 import CartSidebar from "./CartSidebar";
 
 const UserCart = () => {

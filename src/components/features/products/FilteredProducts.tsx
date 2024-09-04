@@ -1,38 +1,10 @@
 "use client";
 
 import { useState } from "react";
-
-import { products } from "@/components/utils/data";
-import { getProductDetails } from "@/components/utils/getProductDetails";
-import { ProductsProps } from "@/types/types";
-import { FilterButton, ProductItem } from "../../utils/helper";
+import { FilterButton, ProductsList } from "../../utils/helper";
 
 const FilteredProducts = () => {
 	const [sortOption, setSortOption] = useState("all");
-
-	const { sortedPriceProducts, sortedTitleProducts } = getProductDetails(products);
-
-	let finalProducts;
-
-	if (sortOption === "all") {
-		finalProducts = products;
-	} else if (sortOption === "bestseller") {
-		finalProducts = products?.filter((prod: ProductsProps) =>
-			prod.categories!.includes("bestseller")
-		);
-	} else if (sortOption === "featured") {
-		finalProducts = products?.filter((prod: ProductsProps) =>
-			prod.categories!.includes("featured")
-		);
-	} else if (sortOption === "az") {
-		finalProducts = sortedTitleProducts;
-	} else if (sortOption === "za") {
-		finalProducts = sortedTitleProducts.reverse();
-	} else if (sortOption === "lh") {
-		finalProducts = sortedPriceProducts;
-	} else if (sortOption === "hl") {
-		finalProducts = sortedPriceProducts.reverse();
-	}
 
 	return (
 		<section aria-labelledby="Products">
@@ -90,7 +62,7 @@ const FilteredProducts = () => {
 							<option value="all" defaultValue={"all"}>
 								All Products
 							</option>
-							<option value="bestseller">Best Selling</option>
+							<option value="newArrivals">New Arrivals</option>
 							<option value="featured">Featured</option>
 							<option value="az">Alphabetically, A-Z</option>
 							<option value="za">Alphabetically, Z-A</option>
@@ -100,21 +72,7 @@ const FilteredProducts = () => {
 					</div>
 				</div>
 
-				<div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-					{finalProducts?.map((prod: ProductsProps) => (
-						<ProductItem
-							key={prod.id}
-							id={prod.id}
-							brand={prod.brand}
-							title={prod.title}
-							price={prod.price}
-							rating={prod.rating}
-							imgSrc1={prod.imgSrc1}
-							imgSrc2={prod.imgSrc2}
-							priceCrossed={prod.priceCrossed}
-						/>
-					))}
-				</div>
+				<ProductsList sortOption={sortOption} />
 			</div>
 		</section>
 	);

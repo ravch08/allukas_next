@@ -1,6 +1,7 @@
-import useCartStore from "@/hooks/useCartStore";
-import { CartProducts } from "@/types/types";
 import Image from "next/image";
+
+import { CartProducts } from "@/types/types";
+import useCartStore from "../../store/useCartStore";
 
 const CartProductDetail = ({ id, imgSrc, title, price, quantity }: CartProducts) => {
 	const { incrementQuantity, decrementQuantity, removeFromCart } = useCartStore();

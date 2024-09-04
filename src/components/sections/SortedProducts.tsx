@@ -11,9 +11,7 @@ import "swiper/css/pagination";
 import { ProductsProps, SortedProductProps } from "../../types/types";
 import { ProductItem, SectionHeading } from "../utils/helper";
 
-const SortedProducts = (props: SortedProductProps) => {
-	const { heading, subHeading, products } = props;
-
+const SortedProducts = ({ heading, subHeading, products }: SortedProductProps) => {
 	return (
 		<section aria-labelledby="New Arrivals">
 			<div className="container mx-auto px-8">

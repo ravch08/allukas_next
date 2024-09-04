@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import useCartStore from "@/hooks/useCartStore";
 import { CartProducts } from "@/types/types";
+import useCartStore from "../../store/useCartStore";
 
 const CartProductInfo = ({ id, imgSrc, title, quantity, price }: CartProducts) => {
 	const { cartItems, removeFromCart, incrementQuantity, decrementQuantity } = useCartStore();

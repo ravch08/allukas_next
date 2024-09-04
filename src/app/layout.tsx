@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 
-import { Footer, Header } from "../components/utils/helper";
+import { AuthProvider, Footer, Header } from "../components/utils/helper";
 
 import "../styles/App.css";
 import "../styles/index.css";
@@ -24,9 +24,12 @@ export default function RootLayout({
 			<body className={jost.className}>
 				<div id="modal"></div>
 				<div id="overlay"></div>
-				<Header />
-				{children}
-				<Footer />
+
+				<AuthProvider>
+					<Header />
+					{children}
+					<Footer />
+				</AuthProvider>
 			</body>
 		</html>
 	);
